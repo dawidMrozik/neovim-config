@@ -11,7 +11,7 @@ return {
     'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
     'MunifTanjim/nui.nvim',
   },
-  lazy = false,
+  lazy = true,
   keys = {
     { '\\', ':Neotree float reveal<CR>', desc = 'NeoTree reveal', silent = true },
     { '<leader>t', ':Neotree float reveal<CR>', desc = 'NeoTree float', silent = true },
@@ -21,13 +21,11 @@ return {
   opts = {
     window = {
       position = 'float',
-    },
-    filesystem = {
-      window = {
-        mappings = {
-          ['\\'] = 'close_window',
-          ['<leader>t'] = 'close_window',
-        },
+      mappings = {
+        ['\\'] = 'close_window',
+        ['<leader>t'] = 'close_window',
+        ['l'] = 'open',
+        ['h'] = 'close_node',
       },
     },
   },
