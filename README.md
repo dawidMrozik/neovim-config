@@ -1,5 +1,31 @@
 # kickstart.nvim
 
+## Install
+
+<details><summary> Linux and Mac </summary>
+
+```sh
+git clone https://github.com/dawidMrozik/neovim-config.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
+```
+
+</details>
+
+<details><summary> Windows </summary>
+
+If you're using `cmd.exe`:
+
+```
+git clone https://github.com/dawidMrozik/neovim-config.git "%localappdata%\nvim"
+```
+
+If you're using `powershell.exe`
+
+```
+git clone https://github.com/dawidMrozik/neovim-config.git "${env:LOCALAPPDATA}\nvim"
+```
+
+</details>
+
 ## Introduction
 
 A starting point for Neovim that is:
