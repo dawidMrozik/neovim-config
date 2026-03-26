@@ -11,6 +11,11 @@ return {
       topdelete = { text = '‾' }, ---@diagnostic disable-line: missing-fields
       changedelete = { text = '~' }, ---@diagnostic disable-line: missing-fields
     },
+    current_line_blame = false,
+    current_line_blame_opts = { delay = 300 },
+  },
+  keys = {
+    { '<leader>gb', '<cmd>Gitsigns toggle_current_line_blame<CR>', desc = 'Toggle [G]it [B]lame' },
   },
 }
 
