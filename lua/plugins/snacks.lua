@@ -2,8 +2,12 @@ return {
   'folke/snacks.nvim',
   priority = 1000,
   lazy = false,
+  keys = {
+    { '<leader>gg', function() Snacks.lazygit() end, desc = 'Open LazyGit' },
+  },
   ---@type snacks.Config
   opts = {
+    lazygit = { enabled = true },
     dashboard = {
       enabled = true,
       sections = {

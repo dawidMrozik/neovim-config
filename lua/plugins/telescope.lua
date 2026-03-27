@@ -38,19 +38,47 @@ return {
     vim.keymap.set('n', '<leader>sc', builtin.commands, { desc = '[S]earch [C]ommands' })
     vim.keymap.set('n', '<leader><leader>', '<cmd>Telescope frecency workspace=CWD<CR>', { desc = '[ ] Find files (frecency)' })
 
+    -- Go to source definition (skips imports for TypeScript)
+    local function goto_source_definition()
+      local clients = vim.lsp.get_clients { bufnr = 0, name = 'ts_ls' }
+      if #clients > 0 then
+        local params = vim.lsp.util.make_position_params()
+        clients[1]:request('workspace/executeCommand', {
+          command = '_typescript.goToSourceDefinition',
+          arguments = { vim.uri_from_bufnr(0), params.position },
+        }, function(err, result)
+          vim.schedule(function()
+            if not err and result and #result > 0 then
+              local loc = result[1]
+              local uri = loc.uri or loc.targetUri
+              local range = loc.range or loc.targetSelectionRange
+              local bufnr = vim.uri_to_bufnr(uri)
+              vim.api.nvim_set_current_buf(bufnr)
+              vim.api.nvim_win_set_cursor(0, { range.start.line + 1, range.start.character })
+            else
+              vim.lsp.buf.definition()
+            end
+          end)
+        end)
+      else
+        vim.lsp.buf.definition()
+      end
+    end
+
     -- LSP keymaps via Telescope pickers
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('telescope-lsp-attach', { clear = true }),
       callback = function(event)
         local buf = event.buf
         vim.keymap.set('n', 'grr', builtin.lsp_references, { buffer = buf, desc = '[G]oto [R]eferences' })
-        vim.keymap.set('n', 'gi', builtin.lsp_definitions, { buffer = buf, desc = '[G]o to definition' })
+        vim.keymap.set('n', 'gi', goto_source_definition, { buffer = buf, desc = '[G]o to definition' })
         vim.keymap.set('n', 'gri', builtin.lsp_implementations, { buffer = buf, desc = '[G]oto [I]mplementation' })
         vim.keymap.set('n', 'grd', builtin.lsp_definitions, { buffer = buf, desc = '[G]oto [D]efinition' })
         vim.keymap.set('n', 'gO', builtin.lsp_document_symbols, { buffer = buf, desc = 'Open Document Symbols' })
         vim.keymap.set('n', 'gW', builtin.lsp_dynamic_workspace_symbols, { buffer = buf, desc = 'Open Workspace Symbols' })
         vim.keymap.set('n', 'grt', builtin.lsp_type_definitions, { buffer = buf, desc = '[G]oto [T]ype Definition' })
-        vim.keymap.set('n', 'gd', builtin.lsp_references, { buffer = buf, desc = 'List usages' })
+        vim.keymap.set('n', 'gd', goto_source_definition, { buffer = buf, desc = '[G]oto [D]efinition' })
+        vim.keymap.set('n', 'gr', builtin.lsp_references, { buffer = buf, desc = '[G]oto [R]eferences' })
       end,
     })
 
