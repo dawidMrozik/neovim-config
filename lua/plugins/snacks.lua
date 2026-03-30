@@ -4,10 +4,12 @@ return {
   lazy = false,
   keys = {
     { '<leader>gg', function() Snacks.lazygit() end, desc = 'Open LazyGit' },
+    { '~', function() Snacks.terminal(nil, { cwd = Snacks.git.get_root() }) end, desc = 'Floating Terminal' },
   },
   ---@type snacks.Config
   opts = {
     lazygit = { enabled = true },
+    terminal = { enabled = true },
     dashboard = {
       enabled = true,
       sections = {

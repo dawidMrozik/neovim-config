@@ -28,6 +28,10 @@ end, { desc = '[P]rev [E]rror' })
 
 -- Terminal
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+vim.keymap.set('t', '<C-h>', '<C-\\><C-n><cmd>close<CR><C-w>h', { desc = 'Close terminal, move left' })
+vim.keymap.set('t', '<C-j>', '<C-\\><C-n><cmd>close<CR><C-w>j', { desc = 'Close terminal, move down' })
+vim.keymap.set('t', '<C-k>', '<C-\\><C-n><cmd>close<CR><C-w>k', { desc = 'Close terminal, move up' })
+vim.keymap.set('t', '<C-l>', '<C-\\><C-n><cmd>close<CR><C-w>l', { desc = 'Close terminal, move right' })
 
 -- Split and pick a file to open
 local function split_and_pick(split_cmd)

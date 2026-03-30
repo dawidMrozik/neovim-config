@@ -14,7 +14,7 @@ return {
   lazy = true,
   keys = {
     { '\\', ':Neotree float reveal<CR>', desc = 'NeoTree reveal', silent = true },
-    { '<leader>t', ':Neotree float reveal<CR>', desc = 'NeoTree float', silent = true },
+    { '<leader>e', ':Neotree float reveal<CR>', desc = 'NeoTree float', silent = true },
   },
   ---@module 'neo-tree'
   ---@type neotree.Config
@@ -23,7 +23,7 @@ return {
       position = 'float',
       mappings = {
         ['\\'] = 'close_window',
-        ['<leader>t'] = 'close_window',
+        ['<leader>e'] = 'close_window',
         ['l'] = 'open',
         ['h'] = 'close_node',
       },
