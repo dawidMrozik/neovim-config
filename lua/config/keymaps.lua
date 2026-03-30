@@ -46,6 +46,11 @@ vim.keymap.set('n', '<leader>sk', split_and_pick 'aboveleft split', { desc = '[S
 vim.keymap.set('n', '<Left>', '<C-d>zz', { desc = 'Scroll down and center' })
 vim.keymap.set('n', '<Down>', '<C-u>zz', { desc = 'Scroll up and center' })
 
+-- Buffer navigation
+vim.keymap.set('n', 'H', '<cmd>BufferLineCyclePrev<CR>', { desc = 'Previous buffer' })
+vim.keymap.set('n', 'L', '<cmd>BufferLineCycleNext<CR>', { desc = 'Next buffer' })
+vim.keymap.set('n', '<leader>wo', '<cmd>bdelete<CR>', { desc = 'Close buffer' })
+
 -- Window navigation
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
