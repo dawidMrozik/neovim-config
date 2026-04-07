@@ -18,7 +18,10 @@ return {
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
   opts = {
-    keymap = { preset = 'enter' },
+    keymap = {
+      preset = 'enter',
+      ['<C-.>'] = { 'show', 'show_documentation', 'hide_documentation' },
+    },
     appearance = { nerd_font_variant = 'mono' },
     completion = {
       documentation = { auto_show = false, auto_show_delay_ms = 500 },
