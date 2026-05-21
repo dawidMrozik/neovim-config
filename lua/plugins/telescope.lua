@@ -48,7 +48,6 @@ return {
     vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
     vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
     vim.keymap.set('n', '<leader>sc', builtin.commands, { desc = '[S]earch [C]ommands' })
-    vim.keymap.set('n', '<leader><leader>', '<cmd>Telescope frecency workspace=CWD<CR>', { desc = '[ ] Find files (frecency)' })
 
     -- Go to source definition (skips imports for TypeScript)
     local function goto_source_definition()

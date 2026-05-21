@@ -5,11 +5,13 @@ return {
   keys = {
     { '<leader>gg', function() Snacks.lazygit() end, desc = 'Open LazyGit' },
     { '~', function() Snacks.terminal(nil, { cwd = Snacks.git.get_root() }) end, desc = 'Floating Terminal' },
+    { '<leader><leader>', function() Snacks.picker.smart() end, desc = 'Find files (smart)' },
   },
   ---@type snacks.Config
   opts = {
     lazygit = { enabled = true },
     terminal = { enabled = true },
+    picker = { enabled = true },
     dashboard = {
       enabled = true,
       sections = {
