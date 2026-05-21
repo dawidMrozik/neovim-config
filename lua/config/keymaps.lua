@@ -58,8 +58,8 @@ vim.keymap.set('n', '<Left>', '<C-d>zz', { desc = 'Scroll down and center' })
 vim.keymap.set('n', '<Down>', '<C-u>zz', { desc = 'Scroll up and center' })
 
 -- Buffer navigation
-vim.keymap.set('n', 'H', '<cmd>BufferLineCyclePrev<CR>', { desc = 'Previous buffer' })
-vim.keymap.set('n', 'L', '<cmd>BufferLineCycleNext<CR>', { desc = 'Next buffer' })
+vim.keymap.set('n', 'H', '<cmd>bprevious<CR>', { desc = 'Previous buffer' })
+vim.keymap.set('n', 'L', '<cmd>bnext<CR>', { desc = 'Next buffer' })
 vim.keymap.set('n', '<leader>wo', '<cmd>bdelete<CR>', { desc = 'Close buffer' })
 
 -- Window navigation
