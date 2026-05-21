@@ -1,6 +1,9 @@
 -- Save with Ctrl+S (map Cmd+S to hex 0x13 in iTerm2)
 vim.keymap.set({ 'n', 'i', 'v' }, '<C-s>', '<cmd>w<CR>', { desc = 'Save file' })
 
+-- Code actions (VS Code-style)
+vim.keymap.set({ 'n', 'i', 'v' }, '<C-.>', vim.lsp.buf.code_action, { desc = 'LSP: Code Action' })
+
 -- Option+Backspace: delete word backward, Option+Delete: delete word forward
 vim.keymap.set('i', '<M-BS>', '<C-w>', { desc = 'Delete word backward' })
 vim.keymap.set('i', '<M-Del>', '<C-o>dw', { desc = 'Delete word forward' })
