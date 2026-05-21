@@ -11,7 +11,17 @@ return {
   opts = {
     lazygit = { enabled = true },
     terminal = { enabled = true },
-    picker = { enabled = true },
+    picker = {
+      enabled = true,
+      win = {
+        input = {
+          keys = {
+            ['<PageDown>'] = { 'preview_scroll_down', mode = { 'i', 'n' } },
+            ['<PageUp>'] = { 'preview_scroll_up', mode = { 'i', 'n' } },
+          },
+        },
+      },
+    },
     dashboard = {
       enabled = true,
       sections = {
