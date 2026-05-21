@@ -9,8 +9,9 @@ return {
     icons = { mappings = vim.g.have_nerd_font },
     spec = {
       { '<leader>s', group = '[S]earch', mode = { 'n', 'v' } },
+      { '<leader>t', group = '[T]est' },
       { '<leader>T', group = '[T]oggle' },
-      { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+      { '<leader>h', group = '[H]arpoon' },
       { 'gr', group = 'LSP Actions', mode = { 'n' } },
       { '<leader>w', proxy = '<C-w>', group = '[W]indow' },
     },

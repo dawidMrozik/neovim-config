@@ -103,6 +103,31 @@ return {
       vim.lsp.config(name, server)
       vim.lsp.enable(name)
     end
+
+    -- Pre-warm ts_ls when starting nvim in a JS/TS project
+    vim.api.nvim_create_autocmd('VimEnter', {
+      group = vim.api.nvim_create_augroup('warmup-tsls', { clear = true }),
+      callback = function()
+        local cwd = vim.fn.getcwd()
+        if vim.fn.filereadable(cwd .. '/package.json') ~= 1 then
+          return
+        end
+        for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+          local ft = vim.bo[buf].filetype
+          if ft == 'typescript' or ft == 'typescriptreact' or ft == 'javascript' or ft == 'javascriptreact' then
+            return
+          end
+        end
+        local buf = vim.api.nvim_create_buf(false, false)
+        vim.api.nvim_buf_set_name(buf, cwd .. '/.nvim-lsp-warmup.ts')
+        vim.bo[buf].filetype = 'typescript'
+        vim.defer_fn(function()
+          if vim.api.nvim_buf_is_valid(buf) then
+            vim.api.nvim_buf_delete(buf, { force = true })
+          end
+        end, 5000)
+      end,
+    })
   end,
 }
 
